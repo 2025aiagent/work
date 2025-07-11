@@ -1,0 +1,16 @@
+https://learn.microsoft.com/zh-tw/dax/
+
+
+
+
+DEFINE
+var a = FILTER(air_quality, RELATED('dim_縣市'[county]) == "Taichung City" )/* START QUERY BUILDER */
+MEASURE air_quality[台中筆數] = COUNTROWS(a)
+MEASURE air_quality[Total] = COUNTROWS(All(air_quality))
+EVALUATE
+CALCULATETABLE(
+    ROW(
+    "台中筆數", [台中筆數],
+	"total", [Total]
+    )
+)

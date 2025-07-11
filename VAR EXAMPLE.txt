@@ -1,0 +1,6 @@
+COUNTAX量值 = 
+    
+    var total = COUNTAX(filter(air_quality , [county] = "Taichung City") , 'air_quality'[county] )
+
+    RETURN
+    IF( total > 0 , total , "台中無該時段資料")
